@@ -8,529 +8,989 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: "class"
+    };
+  </script>
 </head>
 
-<body class="bg-slate-950 text-slate-800 min-h-screen">
+<body class="bg-slate-100 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen transition-colors">
 
-  <!-- Login Page -->
-  <div id="loginPage" class="min-h-screen flex items-center justify-center px-4 py-8
-                               bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+  <!-- ================= LOGIN PAGE ================= -->
+  <div id="loginPage"
+       class="min-h-screen flex items-center justify-center px-4
+              bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900">
+
     <main class="w-full max-w-md">
-      <section class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <section class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl overflow-hidden">
 
         <header class="bg-gradient-to-r from-indigo-700 to-violet-700 text-white p-7 sm:p-8">
-          <div class="w-12 h-12 rounded-2xl bg-white/15 flex items-center justify-center
-                      text-2xl mb-4">🔎</div>
-          <h1 class="text-2xl sm:text-3xl font-bold">CampusFind</h1>
-          <p class="text-indigo-100 mt-1 text-sm">Campus Lost & Found Portal</p>
+          <h1 class="text-3xl font-bold">CampusFind</h1>
+          <p class="text-indigo-100 text-sm mt-1">
+            Campus Lost & Found Portal
+          </p>
         </header>
 
         <section class="p-6 sm:p-8">
-          <h2 class="text-xl font-bold text-slate-900">Student Login</h2>
-          <p class="text-sm text-slate-500 mt-1 mb-6">
-            Sign in to report or manage campus items.
+          <h2 class="text-xl font-bold mb-1">Student Login</h2>
+
+          <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+            Sign in to report and manage items.
           </p>
 
           <form id="loginForm" class="space-y-4">
 
             <label class="block">
-              <span class="block text-sm font-semibold text-slate-700 mb-1">Email</span>
-              <input id="loginEmail" type="email" required
-                placeholder="student@example.com"
-                class="w-full border border-slate-200 rounded-xl px-4 py-3
-                       outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400">
+              <span class="block text-sm font-medium mb-1">
+                Email
+              </span>
+
+              <input
+                id="loginEmail"
+                type="email"
+                required
+                placeholder="student@campusfind.com"
+                class="w-full border border-slate-200 dark:border-slate-700
+                       bg-white dark:bg-slate-800
+                       text-slate-800 dark:text-white
+                       rounded-xl px-4 py-3 outline-none
+                       focus:ring-2 focus:ring-indigo-400">
             </label>
 
             <label class="block">
-              <span class="block text-sm font-semibold text-slate-700 mb-1">Password</span>
-              <input id="loginPassword" type="password" required
+              <span class="block text-sm font-medium mb-1">
+                Password
+              </span>
+
+              <input
+                id="loginPassword"
+                type="password"
+                required
                 placeholder="Enter password"
-                class="w-full border border-slate-200 rounded-xl px-4 py-3
-                       outline-none focus:ring-2 focus:ring-indigo-400 focus:border-indigo-400">
+                class="w-full border border-slate-200 dark:border-slate-700
+                       bg-white dark:bg-slate-800
+                       text-slate-800 dark:text-white
+                       rounded-xl px-4 py-3 outline-none
+                       focus:ring-2 focus:ring-indigo-400">
             </label>
 
-            <p id="loginMessage" class="hidden text-sm rounded-lg p-3"></p>
+            <p id="loginMessage"
+               class="hidden text-sm p-3 rounded-lg">
+            </p>
 
-            <button type="submit"
-              class="w-full bg-indigo-600 hover:bg-indigo-700 text-white
-                     py-3 rounded-xl font-semibold transition">
+            <button
+              type="submit"
+              class="w-full bg-indigo-600 hover:bg-indigo-700
+                     text-white py-3 rounded-xl font-semibold">
               Login
             </button>
           </form>
 
-          <div class="mt-5 p-3 rounded-xl bg-slate-50 border border-slate-200">
-            <p class="text-xs text-slate-500">
-              Demo login:
-              <span class="font-semibold text-slate-700">student@campusfind.com</span>
+          <div class="mt-5 p-3 rounded-xl
+                      bg-slate-50 dark:bg-slate-800
+                      border border-slate-200 dark:border-slate-700">
+
+            <p class="text-xs text-slate-500 dark:text-slate-400">
+              Demo Login:
+              <b class="text-slate-700 dark:text-white">
+                student@campusfind.com
+              </b>
               /
-              <span class="font-semibold text-slate-700">1234</span>
+              <b class="text-slate-700 dark:text-white">
+                1234
+              </b>
             </p>
           </div>
-
-          <p class="text-center text-xs text-slate-400 mt-5">
-            Frontend-only demo login for Practical No. 10
-          </p>
         </section>
+
       </section>
     </main>
   </div>
 
-  <!-- Application -->
-  <div id="appPage" class="hidden min-h-screen bg-slate-100">
 
-    <!-- Semantic Header -->
+  <!-- ================= MAIN APP ================= -->
+  <div id="appPage" class="hidden min-h-screen">
+
+    <!-- Header -->
     <header class="bg-gradient-to-r from-slate-950 via-indigo-950 to-indigo-900 text-white">
-      <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+
+      <nav
+        class="max-w-6xl mx-auto px-4 py-4
+               flex flex-col sm:flex-row
+               items-center justify-between gap-3">
 
         <div>
-          <h1 class="text-xl sm:text-2xl font-bold tracking-tight">CampusFind</h1>
-          <p class="text-xs sm:text-sm text-indigo-200">Lost & Found Portal</p>
+          <h1 class="text-2xl font-bold">
+            CampusFind
+          </h1>
+
+          <p class="text-xs sm:text-sm text-indigo-200">
+            Lost & Found Portal
+          </p>
         </div>
 
         <div class="flex items-center gap-2">
-          <span id="userEmail"
-            class="hidden md:block text-sm text-slate-200"></span>
 
-          <button id="logoutBtn"
-            class="bg-white/10 hover:bg-white/20 border border-white/15
+          <button
+            id="themeBtn"
+            class="bg-white/10 hover:bg-white/20
+                   border border-white/20
+                   px-3 py-2 rounded-lg text-sm font-semibold">
+            🌙 Dark
+          </button>
+
+          <button
+            id="logoutBtn"
+            class="bg-white/10 hover:bg-white/20
+                   border border-white/20
                    px-3 py-2 rounded-lg text-sm font-semibold">
             Logout
           </button>
+
         </div>
 
       </nav>
     </header>
 
+
     <!-- Main -->
     <main class="max-w-6xl mx-auto px-4 py-6 sm:py-8">
 
       <!-- Hero -->
-      <section class="relative overflow-hidden bg-gradient-to-r from-indigo-700 to-violet-700
-                      text-white rounded-3xl shadow-lg p-6 sm:p-8 mb-6">
-        <div class="relative z-10 max-w-2xl">
-          <span class="inline-block text-xs font-bold tracking-wide uppercase
-                       bg-white/15 px-3 py-1 rounded-full mb-3">
-            Student Community
-          </span>
+      <section
+        class="bg-gradient-to-r from-indigo-700 to-violet-700
+               text-white rounded-3xl shadow-lg
+               p-6 sm:p-8 mb-6">
 
-          <h2 class="text-2xl sm:text-4xl font-bold mb-2">
-            Lost something? Found something?
-          </h2>
+        <span
+          class="inline-block bg-white/15 px-3 py-1
+                 rounded-full text-xs font-semibold mb-3">
+          Student Community
+        </span>
 
-          <p class="text-indigo-100 text-sm sm:text-base mb-5">
-            Report items around your campus and help return them to the right person.
-          </p>
+        <h2 class="text-2xl sm:text-4xl font-bold mb-2">
+          Lost something? Found something?
+        </h2>
 
-          <button id="reportBtn"
-            class="bg-white text-indigo-700 hover:bg-indigo-50
-                   px-5 py-3 rounded-xl font-bold shadow-sm transition">
-            + Report Item
-          </button>
-        </div>
+        <p class="text-indigo-100 text-sm sm:text-base mb-5">
+          Report items around your campus and help return them.
+        </p>
 
-        <div class="absolute -right-12 -bottom-16 w-48 h-48 rounded-full
-                    bg-white/10"></div>
-        <div class="absolute right-10 top-8 w-20 h-20 rounded-full
-                    bg-fuchsia-300/10"></div>
+        <button
+          id="reportBtn"
+          class="bg-white text-indigo-700
+                 hover:bg-indigo-50
+                 px-5 py-3 rounded-xl font-bold">
+          + Report Item
+        </button>
+
       </section>
+
 
       <!-- Statistics -->
-      <section aria-label="Report statistics"
-        class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6">
+      <section
+        class="grid grid-cols-2 sm:grid-cols-4
+               gap-3 sm:gap-4 mb-6">
 
-        <article class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
-          <p class="text-xs sm:text-sm text-slate-500">Total Reports</p>
-          <p id="totalCount" class="text-2xl font-bold text-slate-900 mt-1">0</p>
+        <article
+          class="bg-white dark:bg-slate-900
+                 border border-slate-200 dark:border-slate-800
+                 rounded-2xl p-4 shadow-sm">
+
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+            Total Reports
+          </p>
+
+          <p id="totalCount"
+             class="text-2xl font-bold mt-1">
+            0
+          </p>
+
         </article>
 
-        <article class="bg-white rounded-2xl shadow-sm border border-rose-100 p-4">
-          <p class="text-xs sm:text-sm text-rose-500">Lost</p>
-          <p id="lostCount" class="text-2xl font-bold text-rose-600 mt-1">0</p>
+
+        <article
+          class="bg-white dark:bg-slate-900
+                 border border-rose-100 dark:border-rose-900
+                 rounded-2xl p-4 shadow-sm">
+
+          <p class="text-xs sm:text-sm text-rose-500">
+            Lost
+          </p>
+
+          <p id="lostCount"
+             class="text-2xl font-bold text-rose-600 mt-1">
+            0
+          </p>
+
         </article>
 
-        <article class="bg-white rounded-2xl shadow-sm border border-emerald-100 p-4">
-          <p class="text-xs sm:text-sm text-emerald-600">Found</p>
-          <p id="foundCount" class="text-2xl font-bold text-emerald-600 mt-1">0</p>
+
+        <article
+          class="bg-white dark:bg-slate-900
+                 border border-emerald-100 dark:border-emerald-900
+                 rounded-2xl p-4 shadow-sm">
+
+          <p class="text-xs sm:text-sm text-emerald-600">
+            Found
+          </p>
+
+          <p id="foundCount"
+             class="text-2xl font-bold text-emerald-600 mt-1">
+            0
+          </p>
+
         </article>
 
-        <article class="bg-white rounded-2xl shadow-sm border border-indigo-100 p-4">
-          <p class="text-xs sm:text-sm text-indigo-500">Resolved</p>
-          <p id="resolvedCount" class="text-2xl font-bold text-indigo-600 mt-1">0</p>
+
+        <article
+          class="bg-white dark:bg-slate-900
+                 border border-indigo-100 dark:border-indigo-900
+                 rounded-2xl p-4 shadow-sm">
+
+          <p class="text-xs sm:text-sm text-indigo-500">
+            Resolved
+          </p>
+
+          <p id="resolvedCount"
+             class="text-2xl font-bold text-indigo-600 mt-1">
+            0
+          </p>
+
         </article>
+
       </section>
 
-      <!-- Search / Filter -->
-      <section class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 mb-6">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-          <div>
-            <h2 class="text-lg sm:text-xl font-bold text-slate-900">Find a Report</h2>
-            <p class="text-xs sm:text-sm text-slate-500">Search by item or location.</p>
-          </div>
-        </div>
+
+      <!-- Search -->
+      <section
+        class="bg-white dark:bg-slate-900
+               border border-slate-200 dark:border-slate-800
+               rounded-2xl shadow-sm p-4 mb-6">
+
+        <h2 class="text-xl font-bold mb-4">
+          Find a Report
+        </h2>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
 
           <label>
-            <span class="block text-sm font-medium mb-1">Search</span>
-            <input id="searchInput" type="text"
-              placeholder="e.g. Earbuds"
-              class="w-full border border-slate-200 rounded-xl px-3 py-2
-                     outline-none focus:ring-2 focus:ring-indigo-400">
+            <span class="block text-sm font-medium mb-1">
+              Search
+            </span>
+
+            <input
+              id="searchInput"
+              type="text"
+              placeholder="Search item or location..."
+              class="w-full border border-slate-200 dark:border-slate-700
+                     bg-white dark:bg-slate-800
+                     rounded-xl px-3 py-2 outline-none
+                     focus:ring-2 focus:ring-indigo-400">
           </label>
 
+
           <label>
-            <span class="block text-sm font-medium mb-1">Type</span>
-            <select id="typeFilter"
-              class="w-full border border-slate-200 rounded-xl px-3 py-2">
+            <span class="block text-sm font-medium mb-1">
+              Type
+            </span>
+
+            <select
+              id="typeFilter"
+              class="w-full border border-slate-200 dark:border-slate-700
+                     bg-white dark:bg-slate-800
+                     rounded-xl px-3 py-2">
+
               <option value="all">All</option>
               <option value="lost">Lost</option>
               <option value="found">Found</option>
+
             </select>
           </label>
 
+
           <label>
-            <span class="block text-sm font-medium mb-1">Category</span>
-            <select id="categoryFilter"
-              class="w-full border border-slate-200 rounded-xl px-3 py-2">
+            <span class="block text-sm font-medium mb-1">
+              Category
+            </span>
+
+            <select
+              id="categoryFilter"
+              class="w-full border border-slate-200 dark:border-slate-700
+                     bg-white dark:bg-slate-800
+                     rounded-xl px-3 py-2">
+
               <option value="all">All</option>
-              <option value="Electronics">Electronics</option>
-              <option value="Documents">Documents</option>
-              <option value="Accessories">Accessories</option>
-              <option value="Books">Books</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
-
-        </div>
-      </section>
-
-      <!-- Reports -->
-      <section aria-labelledby="reportsHeading">
-        <div class="flex items-center justify-between mb-4">
-          <h2 id="reportsHeading" class="text-xl sm:text-2xl font-bold text-slate-900">
-            Recent Reports
-          </h2>
-        </div>
-
-        <div id="itemList"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
-        </div>
-      </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-slate-950 text-slate-400 text-center py-5 mt-6">
-      <p class="text-sm">
-        CampusFind &copy; 2026 | Frontend Web Application
-      </p>
-    </footer>
-  </div>
-
-  <!-- Report Form Modal -->
-  <div id="formModal"
-    class="hidden fixed inset-0 bg-slate-950/60 backdrop-blur-sm
-           items-center justify-center p-4 z-50">
-
-    <section class="bg-white w-full max-w-lg rounded-3xl p-5 sm:p-6 shadow-2xl">
-
-      <div class="flex items-center justify-between mb-5">
-        <div>
-          <h2 class="text-xl font-bold text-slate-900">Report Item</h2>
-          <p class="text-xs text-slate-500">Add a lost or found report.</p>
-        </div>
-
-        <button id="closeBtn"
-          class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-slate-200
-                 text-slate-600 text-2xl">
-          &times;
-        </button>
-      </div>
-
-      <form id="itemForm" class="space-y-4">
-
-        <label class="block">
-          <span class="block text-sm font-medium mb-1">Item Name</span>
-          <input id="itemName" type="text" required
-            placeholder="e.g. Black Earbuds"
-            class="w-full border border-slate-200 rounded-xl px-3 py-2">
-        </label>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-
-          <label>
-            <span class="block text-sm font-medium mb-1">Type</span>
-            <select id="itemType"
-              class="w-full border border-slate-200 rounded-xl px-3 py-2">
-              <option value="lost">Lost</option>
-              <option value="found">Found</option>
-            </select>
-          </label>
-
-          <label>
-            <span class="block text-sm font-medium mb-1">Category</span>
-            <select id="itemCategory"
-              class="w-full border border-slate-200 rounded-xl px-3 py-2">
               <option>Electronics</option>
               <option>Documents</option>
               <option>Accessories</option>
               <option>Books</option>
               <option>Other</option>
+
             </select>
           </label>
 
         </div>
 
+      </section>
+
+
+      <!-- Reports -->
+      <section aria-labelledby="reportsHeading">
+
+        <h2
+          id="reportsHeading"
+          class="text-xl sm:text-2xl font-bold mb-4">
+          Recent Reports
+        </h2>
+
+        <div
+          id="itemList"
+          class="grid grid-cols-1 sm:grid-cols-2
+                 lg:grid-cols-3 gap-4 sm:gap-5">
+        </div>
+
+      </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer
+      class="bg-slate-950 text-slate-400
+             text-center py-5 mt-6">
+
+      <p class="text-sm">
+        CampusFind © 2026 | Frontend Web Application
+      </p>
+
+    </footer>
+
+  </div>
+
+
+  <!-- ================= REPORT MODAL ================= -->
+  <div
+    id="formModal"
+    class="hidden fixed inset-0
+           bg-black/60 backdrop-blur-sm
+           items-center justify-center
+           p-4 z-50">
+
+    <section
+      class="bg-white dark:bg-slate-900
+             w-full max-w-lg
+             rounded-3xl p-5 sm:p-6
+             shadow-2xl">
+
+      <div class="flex items-center justify-between mb-5">
+
+        <div>
+          <h2 class="text-xl font-bold">
+            Report Item
+          </h2>
+
+          <p class="text-xs text-slate-500 dark:text-slate-400">
+            Add a lost or found report.
+          </p>
+        </div>
+
+        <button
+          id="closeBtn"
+          class="w-9 h-9 rounded-lg
+                 bg-slate-100 dark:bg-slate-800
+                 hover:bg-slate-200 dark:hover:bg-slate-700
+                 text-xl">
+          &times;
+        </button>
+
+      </div>
+
+
+      <form id="itemForm" class="space-y-4">
+
         <label class="block">
-          <span class="block text-sm font-medium mb-1">Location</span>
-          <input id="itemLocation" type="text" required
+          <span class="block text-sm font-medium mb-1">
+            Item Name
+          </span>
+
+          <input
+            id="itemName"
+            type="text"
+            required
+            placeholder="e.g. Black Earbuds"
+            class="w-full border border-slate-200 dark:border-slate-700
+                   bg-white dark:bg-slate-800
+                   rounded-xl px-3 py-2">
+        </label>
+
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+          <label>
+            <span class="block text-sm font-medium mb-1">
+              Type
+            </span>
+
+            <select
+              id="itemType"
+              class="w-full border border-slate-200 dark:border-slate-700
+                     bg-white dark:bg-slate-800
+                     rounded-xl px-3 py-2">
+
+              <option value="lost">Lost</option>
+              <option value="found">Found</option>
+
+            </select>
+          </label>
+
+
+          <label>
+            <span class="block text-sm font-medium mb-1">
+              Category
+            </span>
+
+            <select
+              id="itemCategory"
+              class="w-full border border-slate-200 dark:border-slate-700
+                     bg-white dark:bg-slate-800
+                     rounded-xl px-3 py-2">
+
+              <option>Electronics</option>
+              <option>Documents</option>
+              <option>Accessories</option>
+              <option>Books</option>
+              <option>Other</option>
+
+            </select>
+          </label>
+
+        </div>
+
+
+        <label class="block">
+          <span class="block text-sm font-medium mb-1">
+            Location
+          </span>
+
+          <input
+            id="itemLocation"
+            type="text"
+            required
             placeholder="e.g. CSE Lab"
-            class="w-full border border-slate-200 rounded-xl px-3 py-2">
+            class="w-full border border-slate-200 dark:border-slate-700
+                   bg-white dark:bg-slate-800
+                   rounded-xl px-3 py-2">
         </label>
 
+
         <label class="block">
-          <span class="block text-sm font-medium mb-1">Description</span>
-          <textarea id="itemDescription" rows="3" required
+          <span class="block text-sm font-medium mb-1">
+            Description
+          </span>
+
+          <textarea
+            id="itemDescription"
+            rows="3"
+            required
             placeholder="Describe the item..."
-            class="w-full border border-slate-200 rounded-xl px-3 py-2"></textarea>
+            class="w-full border border-slate-200 dark:border-slate-700
+                   bg-white dark:bg-slate-800
+                   rounded-xl px-3 py-2"></textarea>
         </label>
+
 
         <label class="block">
-          <span class="block text-sm font-medium mb-1">Contact</span>
-          <input id="itemContact" type="text" required
+          <span class="block text-sm font-medium mb-1">
+            Contact
+          </span>
+
+          <input
+            id="itemContact"
+            type="text"
+            required
             placeholder="Email or phone"
-            class="w-full border border-slate-200 rounded-xl px-3 py-2">
+            class="w-full border border-slate-200 dark:border-slate-700
+                   bg-white dark:bg-slate-800
+                   rounded-xl px-3 py-2">
         </label>
 
-        <button type="submit"
-          class="w-full bg-indigo-600 hover:bg-indigo-700
-                 text-white py-3 rounded-xl font-semibold transition">
+
+        <button
+          type="submit"
+          class="w-full bg-indigo-600
+                 hover:bg-indigo-700
+                 text-white py-3
+                 rounded-xl font-semibold">
           Submit Report
         </button>
 
       </form>
+
     </section>
+
   </div>
 
+
+  <!-- ================= JAVASCRIPT ================= -->
   <script>
-    // ---------------- LOGIN ----------------
+
+    /* ---------- LOGIN ---------- */
 
     const loginPage = document.getElementById("loginPage");
     const appPage = document.getElementById("appPage");
+
     const loginForm = document.getElementById("loginForm");
     const loginMessage = document.getElementById("loginMessage");
-    const userEmail = document.getElementById("userEmail");
+
     const logoutBtn = document.getElementById("logoutBtn");
 
     const demoEmail = "student@campusfind.com";
     const demoPassword = "1234";
 
-    function showApp(email) {
-      loginPage.classList.add("hidden");
-      appPage.classList.remove("hidden");
-      userEmail.innerText = email;
-      renderItems();
-    }
 
-    loginForm.addEventListener("submit", function (event) {
+    loginForm.addEventListener("submit", function(event) {
+
       event.preventDefault();
 
-      const email = document.getElementById("loginEmail").value;
-      const password = document.getElementById("loginPassword").value;
+      const email =
+        document.getElementById("loginEmail").value;
+
+      const password =
+        document.getElementById("loginPassword").value;
+
 
       if (email === demoEmail && password === demoPassword) {
-        localStorage.setItem("campusFindSession", email);
-        loginMessage.classList.add("hidden");
-        showApp(email);
+
+        localStorage.setItem(
+          "campusFindSession",
+          email
+        );
+
+        loginPage.classList.add("hidden");
+        appPage.classList.remove("hidden");
+
+        renderItems();
+
       } else {
+
         loginMessage.classList.remove("hidden");
-        loginMessage.classList.add("bg-rose-50", "text-rose-600");
+
+        loginMessage.classList.add(
+          "bg-rose-50",
+          "text-rose-600"
+        );
+
         loginMessage.innerText =
-          "Invalid login. Use the demo credentials shown below.";
+          "Invalid email or password.";
+
       }
+
     });
 
-    logoutBtn.addEventListener("click", function () {
+
+    logoutBtn.addEventListener("click", function() {
+
       localStorage.removeItem("campusFindSession");
 
       appPage.classList.add("hidden");
       loginPage.classList.remove("hidden");
 
       loginForm.reset();
-      loginMessage.classList.add("hidden");
+
     });
 
-    // Check existing session
-    const savedSession = localStorage.getItem("campusFindSession");
 
-    // ---------------- CAMPUS FIND ----------------
 
-    let items = JSON.parse(localStorage.getItem("campusFindItems")) || [
-      {
-        id: 1,
-        name: "Black Boat Earbuds",
-        type: "lost",
-        category: "Electronics",
-        location: "CSE Lab",
-        description: "Black wireless earbuds with a small scratch on the case.",
-        contact: "student@example.com",
-        resolved: false
-      },
-      {
-        id: 2,
-        name: "Engineering Mathematics Book",
-        type: "found",
-        category: "Books",
-        location: "College Library",
-        description: "Book found near the reading section.",
-        contact: "9876543210",
-        resolved: false
+    /* ---------- DARK MODE ---------- */
+
+    const themeBtn =
+      document.getElementById("themeBtn");
+
+
+    const savedTheme =
+      localStorage.getItem("campusFindTheme");
+
+
+    if (savedTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+
+
+    function updateThemeButton() {
+
+      if (
+        document.documentElement.classList.contains("dark")
+      ) {
+
+        themeBtn.innerText = "☀️ Light";
+
+      } else {
+
+        themeBtn.innerText = "🌙 Dark";
+
       }
-    ];
 
-    // DOM selection
-    const reportBtn = document.getElementById("reportBtn");
-    const closeBtn = document.getElementById("closeBtn");
-    const formModal = document.getElementById("formModal");
-    const itemForm = document.getElementById("itemForm");
-    const itemList = document.getElementById("itemList");
+    }
 
-    const searchInput = document.getElementById("searchInput");
-    const typeFilter = document.getElementById("typeFilter");
-    const categoryFilter = document.getElementById("categoryFilter");
 
-    const totalCount = document.getElementById("totalCount");
-    const lostCount = document.getElementById("lostCount");
-    const foundCount = document.getElementById("foundCount");
-    const resolvedCount = document.getElementById("resolvedCount");
+    themeBtn.addEventListener("click", function() {
 
-    // Open modal
-    reportBtn.addEventListener("click", function () {
+      document.documentElement.classList.toggle("dark");
+
+
+      if (
+        document.documentElement.classList.contains("dark")
+      ) {
+
+        localStorage.setItem(
+          "campusFindTheme",
+          "dark"
+        );
+
+      } else {
+
+        localStorage.setItem(
+          "campusFindTheme",
+          "light"
+        );
+
+      }
+
+      updateThemeButton();
+
+    });
+
+
+    updateThemeButton();
+
+
+
+    /* ---------- REPORT DATA ---------- */
+
+    let items =
+      JSON.parse(
+        localStorage.getItem("campusFindItems")
+      ) || [
+
+        {
+          id: 1,
+          name: "Black Boat Earbuds",
+          type: "lost",
+          category: "Electronics",
+          location: "CSE Lab",
+          description:
+            "Black wireless earbuds with a small scratch on the case.",
+          contact: "student@campusfind.com",
+          resolved: false
+        },
+
+        {
+          id: 2,
+          name: "Engineering Mathematics Book",
+          type: "found",
+          category: "Books",
+          location: "College Library",
+          description:
+            "Book found near the reading section.",
+          contact: "9876543210",
+          resolved: false
+        }
+
+      ];
+
+
+
+    /* ---------- DOM ELEMENTS ---------- */
+
+    const reportBtn =
+      document.getElementById("reportBtn");
+
+    const closeBtn =
+      document.getElementById("closeBtn");
+
+    const formModal =
+      document.getElementById("formModal");
+
+    const itemForm =
+      document.getElementById("itemForm");
+
+    const itemList =
+      document.getElementById("itemList");
+
+    const searchInput =
+      document.getElementById("searchInput");
+
+    const typeFilter =
+      document.getElementById("typeFilter");
+
+    const categoryFilter =
+      document.getElementById("categoryFilter");
+
+    const totalCount =
+      document.getElementById("totalCount");
+
+    const lostCount =
+      document.getElementById("lostCount");
+
+    const foundCount =
+      document.getElementById("foundCount");
+
+    const resolvedCount =
+      document.getElementById("resolvedCount");
+
+
+
+    /* ---------- MODAL ---------- */
+
+    reportBtn.addEventListener("click", function() {
+
       formModal.classList.remove("hidden");
       formModal.classList.add("flex");
-      document.getElementById("itemName").focus();
+
+      document
+        .getElementById("itemName")
+        .focus();
+
     });
 
-    // Close modal
-    closeBtn.addEventListener("click", closeForm);
 
-    function closeForm() {
+    closeBtn.addEventListener("click", function() {
+
       formModal.classList.add("hidden");
       formModal.classList.remove("flex");
-    }
 
-    // Save report data
+    });
+
+
+
+    /* ---------- STORAGE ---------- */
+
     function saveItems() {
-      localStorage.setItem("campusFindItems", JSON.stringify(items));
+
+      localStorage.setItem(
+        "campusFindItems",
+        JSON.stringify(items)
+      );
+
     }
 
-    // Render using basic DOM methods
+
+
+    /* ---------- RENDER REPORTS ---------- */
+
     function renderItems() {
+
       itemList.innerHTML = "";
 
-      const searchText = searchInput.value.toLowerCase();
-      const selectedType = typeFilter.value;
-      const selectedCategory = categoryFilter.value;
+
+      const searchText =
+        searchInput.value.toLowerCase();
+
+      const selectedType =
+        typeFilter.value;
+
+      const selectedCategory =
+        categoryFilter.value;
+
 
       let foundAny = false;
+
 
       for (let i = 0; i < items.length; i++) {
 
         const item = items[i];
 
+
         const matchesSearch =
-          item.name.toLowerCase().includes(searchText) ||
-          item.location.toLowerCase().includes(searchText);
+          item.name
+            .toLowerCase()
+            .includes(searchText) ||
+
+          item.location
+            .toLowerCase()
+            .includes(searchText);
+
 
         const matchesType =
-          selectedType === "all" || item.type === selectedType;
+          selectedType === "all" ||
+          item.type === selectedType;
+
 
         const matchesCategory =
           selectedCategory === "all" ||
           item.category === selectedCategory;
 
-        if (matchesSearch && matchesType && matchesCategory) {
+
+        if (
+          matchesSearch &&
+          matchesType &&
+          matchesCategory
+        ) {
 
           foundAny = true;
 
-          const card = document.createElement("article");
+
+          const card =
+            document.createElement("article");
 
           card.className =
-            "bg-white rounded-2xl shadow-sm border border-slate-200 p-5 " +
-            "border-l-4 " +
+            "bg-white dark:bg-slate-900 " +
+            "border border-slate-200 dark:border-slate-800 " +
+            "border-l-4 rounded-2xl p-5 shadow-sm " +
             (item.type === "lost"
               ? "border-l-rose-500"
               : "border-l-emerald-500");
 
-          const title = document.createElement("h3");
-          title.className = "text-lg font-bold text-slate-900 mb-2";
-          title.innerText = item.name;
 
-          const badge = document.createElement("span");
+          const title =
+            document.createElement("h3");
+
+          title.className =
+            "text-lg font-bold mb-2";
+
+          title.innerText =
+            item.name;
+
+
+          const badge =
+            document.createElement("span");
+
           badge.className =
-            "inline-block text-xs px-2 py-1 rounded-full mb-3 font-semibold " +
+            "inline-block text-xs px-2 py-1 " +
+            "rounded-full mb-3 font-semibold " +
             (item.type === "lost"
               ? "bg-rose-100 text-rose-700"
               : "bg-emerald-100 text-emerald-700");
 
-          badge.innerText = item.type.toUpperCase();
+          badge.innerText =
+            item.type.toUpperCase();
 
-          const category = document.createElement("p");
-          category.className = "text-sm text-slate-500 mb-1";
-          category.innerText = "Category: " + item.category;
 
-          const location = document.createElement("p");
-          location.className = "text-sm text-slate-500 mb-3";
-          location.innerText = "Location: " + item.location;
+          const category =
+            document.createElement("p");
 
-          const description = document.createElement("p");
-          description.className = "text-sm text-slate-600 mb-4";
-          description.innerText = item.description;
+          category.className =
+            "text-sm text-slate-500 dark:text-slate-400 mb-1";
 
-          const buttonBox = document.createElement("div");
-          buttonBox.className = "flex flex-col sm:flex-row gap-2";
+          category.innerText =
+            "Category: " + item.category;
 
-          const contactButton = document.createElement("button");
+
+          const location =
+            document.createElement("p");
+
+          location.className =
+            "text-sm text-slate-500 dark:text-slate-400 mb-3";
+
+          location.innerText =
+            "Location: " + item.location;
+
+
+          const description =
+            document.createElement("p");
+
+          description.className =
+            "text-sm text-slate-600 dark:text-slate-300 mb-4";
+
+          description.innerText =
+            item.description;
+
+
+          const buttonBox =
+            document.createElement("div");
+
+          buttonBox.className =
+            "flex flex-col sm:flex-row gap-2";
+
+
+          const contactButton =
+            document.createElement("button");
+
           contactButton.className =
-            "flex-1 bg-indigo-50 text-indigo-700 px-3 py-2 " +
-            "rounded-lg text-sm font-semibold hover:bg-indigo-100";
+            "flex-1 bg-indigo-50 dark:bg-indigo-950 " +
+            "text-indigo-700 dark:text-indigo-300 " +
+            "px-3 py-2 rounded-lg " +
+            "text-sm font-semibold " +
+            "hover:bg-indigo-100 dark:hover:bg-indigo-900";
 
-          contactButton.innerText = "Contact";
 
-          contactButton.addEventListener("click", function () {
-            alert("Contact details:\n" + item.contact);
-          });
+          contactButton.innerText =
+            "Contact";
 
-          buttonBox.appendChild(contactButton);
+
+          contactButton.addEventListener(
+            "click",
+            function() {
+
+              alert(
+                "Contact Details:\n" +
+                item.contact
+              );
+
+            }
+          );
+
+
+          buttonBox.appendChild(
+            contactButton
+          );
+
 
           if (item.resolved) {
 
-            const resolvedText = document.createElement("p");
-            resolvedText.className =
-              "flex-1 bg-emerald-50 text-emerald-700 text-sm " +
-              "font-semibold p-2 rounded-lg text-center";
+            const resolved =
+              document.createElement("p");
 
-            resolvedText.innerText = "✓ Resolved";
-            buttonBox.appendChild(resolvedText);
+            resolved.className =
+              "flex-1 bg-emerald-50 dark:bg-emerald-950 " +
+              "text-emerald-700 dark:text-emerald-300 " +
+              "text-sm font-semibold " +
+              "p-2 rounded-lg text-center";
+
+            resolved.innerText =
+              "✓ Resolved";
+
+            buttonBox.appendChild(
+              resolved
+            );
 
           } else {
 
-            const resolveButton = document.createElement("button");
+            const resolveButton =
+              document.createElement("button");
 
             resolveButton.className =
-              "flex-1 bg-slate-100 hover:bg-slate-200 " +
-              "px-3 py-2 rounded-lg text-sm font-semibold";
+              "flex-1 bg-slate-100 dark:bg-slate-800 " +
+              "hover:bg-slate-200 dark:hover:bg-slate-700 " +
+              "px-3 py-2 rounded-lg " +
+              "text-sm font-semibold";
 
-            resolveButton.innerText = "Mark Resolved";
+            resolveButton.innerText =
+              "Mark Resolved";
 
-            resolveButton.addEventListener("click", function () {
-              item.resolved = true;
-              saveItems();
-              renderItems();
-            });
 
-            buttonBox.appendChild(resolveButton);
+            resolveButton.addEventListener(
+              "click",
+              function() {
+
+                item.resolved = true;
+
+                saveItems();
+                renderItems();
+
+              }
+            );
+
+
+            buttonBox.appendChild(
+              resolveButton
+            );
+
           }
+
 
           card.appendChild(title);
           card.appendChild(badge);
@@ -540,84 +1000,182 @@
           card.appendChild(buttonBox);
 
           itemList.appendChild(card);
+
         }
+
       }
+
 
       if (!foundAny) {
-        const message = document.createElement("p");
+
+        const message =
+          document.createElement("p");
 
         message.className =
-          "col-span-full bg-white rounded-2xl border border-slate-200 " +
-          "p-8 text-center text-slate-500";
+          "col-span-full " +
+          "bg-white dark:bg-slate-900 " +
+          "border border-slate-200 dark:border-slate-800 " +
+          "rounded-2xl p-8 text-center " +
+          "text-slate-500 dark:text-slate-400";
 
-        message.innerText = "No matching reports found.";
+        message.innerText =
+          "No matching reports found.";
 
         itemList.appendChild(message);
+
       }
 
+
       updateStats();
+
     }
 
-    // Update counters
+
+
+    /* ---------- STATISTICS ---------- */
+
     function updateStats() {
+
       let lost = 0;
       let found = 0;
       let resolved = 0;
 
+
       for (let i = 0; i < items.length; i++) {
 
         if (items[i].resolved) {
+
           resolved++;
-        } else if (items[i].type === "lost") {
+
+        } else if (
+          items[i].type === "lost"
+        ) {
+
           lost++;
+
         } else {
+
           found++;
+
         }
+
       }
 
-      totalCount.innerText = items.length;
-      lostCount.innerText = lost;
-      foundCount.innerText = found;
-      resolvedCount.innerText = resolved;
+
+      totalCount.innerText =
+        items.length;
+
+      lostCount.innerText =
+        lost;
+
+      foundCount.innerText =
+        found;
+
+      resolvedCount.innerText =
+        resolved;
+
     }
 
-    // Add new report
-    itemForm.addEventListener("submit", function (event) {
 
-      event.preventDefault();
 
-      const newItem = {
-        id: Date.now(),
-        name: document.getElementById("itemName").value,
-        type: document.getElementById("itemType").value,
-        category: document.getElementById("itemCategory").value,
-        location: document.getElementById("itemLocation").value,
-        description: document.getElementById("itemDescription").value,
-        contact: document.getElementById("itemContact").value,
-        resolved: false
-      };
+    /* ---------- ADD REPORT ---------- */
 
-      items.unshift(newItem);
+    itemForm.addEventListener(
+      "submit",
+      function(event) {
 
-      saveItems();
+        event.preventDefault();
+
+
+        const newItem = {
+
+          id: Date.now(),
+
+          name:
+            document.getElementById(
+              "itemName"
+            ).value,
+
+          type:
+            document.getElementById(
+              "itemType"
+            ).value,
+
+          category:
+            document.getElementById(
+              "itemCategory"
+            ).value,
+
+          location:
+            document.getElementById(
+              "itemLocation"
+            ).value,
+
+          description:
+            document.getElementById(
+              "itemDescription"
+            ).value,
+
+          contact:
+            document.getElementById(
+              "itemContact"
+            ).value,
+
+          resolved: false
+        };
+
+
+        items.unshift(newItem);
+
+        saveItems();
+        renderItems();
+
+        itemForm.reset();
+
+        formModal.classList.add("hidden");
+        formModal.classList.remove("flex");
+
+      }
+    );
+
+
+
+    /* ---------- SEARCH & FILTER ---------- */
+
+    searchInput.addEventListener(
+      "input",
+      renderItems
+    );
+
+    typeFilter.addEventListener(
+      "change",
+      renderItems
+    );
+
+    categoryFilter.addEventListener(
+      "change",
+      renderItems
+    );
+
+
+
+    /* ---------- START APP ---------- */
+
+    const session =
+      localStorage.getItem(
+        "campusFindSession"
+      );
+
+
+    if (session) {
+
+      loginPage.classList.add("hidden");
+      appPage.classList.remove("hidden");
+
       renderItems();
 
-      itemForm.reset();
-      closeForm();
-    });
-
-    // Search and filter events
-    searchInput.addEventListener("input", renderItems);
-    typeFilter.addEventListener("change", renderItems);
-    categoryFilter.addEventListener("change", renderItems);
-
-    // Start app or login
-    if (savedSession) {
-      showApp(savedSession);
-    } else {
-      loginPage.classList.remove("hidden");
-      appPage.classList.add("hidden");
     }
+
   </script>
 
 </body>
